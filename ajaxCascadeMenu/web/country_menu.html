@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Country Menu</title>
+    <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $.ajax({
+                "url":"/ajaxCascadeMenu/country",
+                "data":{"level":"1"},
+                "type":"get",
+                "dataType":"json",
+                "success":function (json) {
+                    console.log(json);
+                    for(var i=0;i<json.length;i++){
+                        var ch=json[i];
+                        $("#lv1").append("<option value='"+ch.cCode+"'>"+ch.cName+"</option>")
+                    }
+                }
+            })
+        })
+
+        $(function () {
+            $("#lv1").on("change", function () {
+                var parent = $(this).val();
+                $.ajax({
+                    "url": "/ajaxCascadeMenu/country",
+                    "data": {"level": "2", "parent": parent},
+                    "dataType": "json",
+                    "type": "get",
+                    "success": function (json) {
+                        $("#lv2>option").remove();
+                        $("#lv3>option").remove();
+                        $("#lv2").append("<option selected=\"selected\">Choose</option>")
+                        for (var i = 0; i < json.length; i++) {
+                            ch = json[i];
+                            $("#lv2").append("<option value='" + ch.cCode + "'>" + ch.cName + "</option>")
+                        }
+                    }
+                })
+
+            })
+        })
+
+        $(function () {
+            $("#lv2").on("change", function () {
+                var parent = $(this).val();
+                $.ajax({
+                    "url": "/ajaxCascadeMenu/country",
+                    "data": {"level": "3", "parent": parent},
+                    "dataType": "json",
+                    "type": "get",
+                    "success": function (json) {
+                        $("#lv3>option").remove();
+                        for (var i = 0; i < json.length; i++) {
+                            ch = json[i];
+                            $("#lv3").append("<option value='" + ch.cCode + "'>" + ch.cName + "</option>")
+                        }
+                    }
+                })
+            })
+        })
+
+    </script>
+</head>
+
+<body>
+    <select id="lv1" style="width:200px;height: 30px">
+        <option selected="selected">Choose</option>
+    </select>
+    <select id="lv2" style="width: 200px;height: 30px">
+        <option selected="selected">Choose</option>
+    </select>
+    <select id="lv3" style="width: 200px;height: 30px"></select>
+</body>
+</html>
