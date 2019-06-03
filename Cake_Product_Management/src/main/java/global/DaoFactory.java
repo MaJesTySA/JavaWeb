@@ -22,7 +22,9 @@ public class DaoFactory {
         }
         return daoFactory;
     }
+
     public <T> T getDao(Class<T> tClass){
+        //设置自动提交(commit)，默认false。
         return sessionFactory.openSession(true).getMapper(tClass);
     }
 }

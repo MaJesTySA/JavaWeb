@@ -1,6 +1,3 @@
-/*
-  Web服务器打开，就查询所有分类，存到全局对象中，以免每次添加/编辑都需要查询所有分类。提高效率
-*/
 package global;
 
 import biz.CatalogBiz;

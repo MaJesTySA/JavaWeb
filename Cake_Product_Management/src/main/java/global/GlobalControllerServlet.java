@@ -1,4 +1,3 @@
-//这里类的功能跟SpringMVC的DispatcherServlet很类似
 package global;
 
 import javax.servlet.GenericServlet;
