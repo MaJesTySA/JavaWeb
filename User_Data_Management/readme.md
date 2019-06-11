@@ -7,6 +7,8 @@
 - MyBatis基本操作
 
   建立<font color="#FF0000">**mybatis.xml**</font>配置文件→读取配置文件获得<font color="#FF0000">**SqlSessionFactory**</font>对象→建立<font color="#FF0000">**SqlSession**</font>→建立<font color="#FF0000">**mapper.xml**</font>文件→使用SqlSession执行mapper中的SQL语句。
+ 
+- 动态SQL语句
 
 - Servlet使用
 
