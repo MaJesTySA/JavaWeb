@@ -64,7 +64,7 @@
             </form>
         </div>
         <footer class="text-center" >
-            copy@imooc
+            copy@
         </footer>
     </body>
 </html>
