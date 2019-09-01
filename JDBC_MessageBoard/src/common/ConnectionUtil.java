@@ -8,7 +8,7 @@ public final class ConnectionUtil {
 
     private static final String url = "jdbc:mysql://localhost:3306/message_board";
     private static final String user = "root";
-    private static final String password = "z55182182";
+    private static final String password = "";
 
     static {
         try {
