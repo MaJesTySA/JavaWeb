@@ -15,6 +15,7 @@
                     </a>
                 </div>
             </div>
+            <nav><a href="/logout.do">登出</a></nav>
         </nav>
         <div class="container">
             <div class="jumbotron">
@@ -64,7 +65,7 @@
             </form>
         </div>
         <footer class="text-center" >
-            copy@
+            copy@majestysa
         </footer>
     </body>
 </html>

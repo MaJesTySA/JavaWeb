@@ -25,4 +25,12 @@ public class MessageService {
     public int countMessages() {
         return messageDAO.countMessages();
     }
+
+    public int countMyMessages(String username) {
+        return messageDAO.countMyMessages(username);
+    }
+
+    public List<Message> getMyMessages(int page, int pageSize,String username) {
+        return messageDAO.getMyMessages(page, pageSize,username);
+    }
 }

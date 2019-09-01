@@ -70,7 +70,7 @@
             </form>
         </div>
         <footer class="text-center" >
-            copy@
+            copy@majestysa
         </footer>
     </body>
 </html>

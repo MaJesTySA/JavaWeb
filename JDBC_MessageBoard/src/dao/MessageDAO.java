@@ -39,6 +39,34 @@ public class MessageDAO {
         return messages;
     }
 
+    public List<Message> getMyMessages(int page, int pageSize,String username) {
+        List<Message> messages = new ArrayList<>();
+        Connection conn = ConnectionUtil.getConnection();
+        String sql = "SELECT * FROM message WHERE username= ? ORDER BY create_time desc limit ?,?";//从第m条开始，取出总共n条记录
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1,username);
+            stmt.setInt(2, (page - 1) * pageSize);
+            stmt.setInt(3, pageSize);
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                messages.add(new Message(rs.getLong("id"),
+                        rs.getLong("user_id"),
+                        rs.getString("username"),
+                        rs.getString("title"),
+                        rs.getString("content"),
+                        rs.getTimestamp("create_time")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            ConnectionUtil.release(rs, stmt, conn);
+        }
+        return messages;
+    }
+
     public int countMessages() {
         Connection conn = ConnectionUtil.getConnection();
         String sql = "SELECT COUNT(*) total FROM message";
@@ -46,6 +74,26 @@ public class MessageDAO {
         ResultSet rs = null;
         try {
             stmt = conn.prepareStatement(sql);
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                return rs.getInt("total");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            ConnectionUtil.release(rs, stmt, conn);
+        }
+        return 0;
+    }
+
+    public int countMyMessages(String username) {
+        Connection conn = ConnectionUtil.getConnection();
+        String sql = "SELECT COUNT(*) total FROM message WHERE username = ?";
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1,username);
             rs = stmt.executeQuery();
             while (rs.next()) {
                 return rs.getInt("total");

@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>留言板</title>
+    <title>我的留言</title>
     <link rel="stylesheet" href="../../../css/index.css">
     <script type="text/javascript">
         function submitMessageForm(flag) {
@@ -35,7 +35,7 @@
     <div class="container">
         <% if (null != request.getSession().getAttribute("user")) {%>
         <nav>
-            <a href="/my/message/list.do">我的留言</a>
+            <a href="/message/list.do">所有留言</a>
         </nav>
         <nav>
             <a href="/userInfo.do">我的信息</a>
@@ -51,7 +51,7 @@
 <section class="banner">
     <div class="container">
         <div>
-            <h1>留言板</h1>
+            <h1>我的留言</h1>
         </div>
     </div>
 </section>
@@ -92,7 +92,7 @@
 
         <div id="pagefy">
             <ul>
-                <form id="messageForm" action="/message/list.do" method="post">
+                <form id="messageForm" action="/my/message/list.do" method="post">
                     <input type="hidden" id="page" name="page" value="${page}">
                     <input type="hidden" id="last" name="last" value="${last}">
                     <li><a href="javascript:void(0)" onclick="submitMessageForm('first')">首页</a></li>
