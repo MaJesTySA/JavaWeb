@@ -14,9 +14,11 @@ Using Ajax and JavaScript to implement a dynamic cascade country menu.
 
 [details/详情](https://blog.csdn.net/csdn_inside/article/details/89066754)
 
-JDBC MessageBoard/JDBC留言板
+# JDBC MessageBoard/JDBC留言板
 
-使用JDBC+
+使用JDBC+Servlet+JSP实现一个留言板，包含注册、登录、登出，修改用户资料，查看所有留言（分页）、查看我的留言，发布留言功能。
+
+<img src="https://raw.githubusercontent.com/MaJesTySA/JavaWeb/master/img/JDBC_MB/msgList.png" width=90%/>
 
 # Captcha Code/验证码
 
